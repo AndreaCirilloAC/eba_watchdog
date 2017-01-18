@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1484697842084.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9F4C6331",
+    "lastKnownWriteTime" : 7290871921991645047,
+    "last_content_update" : 1484697842084,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "9F47246D",
+        "caption" : "acc_and_aud_db",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=acc_and_aud_db&cache_key=9F47246D",
+        "displayedObservations" : 3,
+        "environment" : "",
+        "object" : "acc_and_aud_db",
+        "preview" : 0,
+        "totalObservations" : 3,
+        "variables" : 3
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(rio)\nlibrary(rvest)\nlibrary(dplyr)\nacc_and_aud_code <- read_html(\"https://www.eba.europa.eu/regulation-and-policy/accounting-and-auditing\")\n\nacc_and_aud_code %>% \n  html_nodes(\" #activities .Title\") %>% \n  html_attr(\"href\") -> link\nacc_and_aud_code %>% \n  html_nodes(\"#activities .Title \") %>% \n  html_text() -> names\n\nacc_and_aud_code %>% \n  html_nodes(\"#activities .Date \") %>% \n  html_text() -> status\n\nacc_and_aud_db <- data.frame(names,status,link)\nView(acc_and_aud_db)\n\n# credit risk regulation and guidelines\n\ncredit_risk <- read_html('https://www.eba.europa.eu/regulation-and-policy/credit-risk/-/activity-list/tSWPlf98sl2V/more')\ncredit_risk %>% \n  html_nodes(\" #activities .Title\") %>% \n  html_attr(\"href\") -> link\n\ncredit_risk %>% \n  html_nodes(\"#activities .Title\") %>% \n  html_text() -> names\n\ncredit_risk_db <- data.frame(names,link)\n\n#derive status and other info from the specific link ( avoiding issue if status or other attributes)\n# are not showing for a given document\n\ninfo_extractor <-  function(urls){\n  page <- read_html(urls)\n  page %>% \n    html_nodes(\".Date\") %>% \n    html_text()-> available_info\n  \n  if(length(available_info) == 2) {\n    status       <- available_info[1]\n    release_date <- available_info[2]\n  \n  }else{\n    status <- available_info[1]\n    page %>%\n      html_node(\".event-create-date\")%>%\n      html_text() -> release_date\n  \n  }\n  return(data.frame(status, release_date))\n}\n\ninfo_extractor(as.character(credit_risk_db[1,2]))\n",
+    "created" : 1484697740631.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3354249576",
+    "id" : "61D8EA62",
+    "lastKnownWriteTime" : 1484698684,
+    "last_content_update" : 1484698684874,
+    "path" : "~/Dropbox/R_projects/eba_watchdog/eba_doc_list.R",
+    "project_path" : "eba_doc_list.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

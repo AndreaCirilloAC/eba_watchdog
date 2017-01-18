@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1484698020174.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "83D70863",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : 1484698020174,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3B5F9F64",
+        "caption" : "credit_risk_db",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=credit_risk_db&cache_key=3B5F9F64",
+        "displayedObservations" : 21,
+        "environment" : "",
+        "object" : "credit_risk_db",
+        "preview" : 0,
+        "totalObservations" : 21,
+        "variables" : 2
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

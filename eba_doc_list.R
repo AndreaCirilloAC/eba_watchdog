@@ -37,7 +37,7 @@ info_extractor <-  function(urls){
   page <- read_html(urls)
   page %>% 
     html_nodes(".Date") %>% 
-    html_text()-> available_info
+    html_text() -> available_info
   
   if(length(available_info) == 2) {
     status       <- available_info[1]
@@ -46,11 +46,19 @@ info_extractor <-  function(urls){
   }else{
     status <- available_info[1]
     page %>%
-      html_node(".event-create-date")%>%
+      html_node(".event-create-date") %>%
       html_text() -> release_date
   
   }
-  return(data.frame(status, release_date))
+  return(c(urls,status, release_date))
 }
 
 info_extractor(as.character(credit_risk_db[1,2]))
+data <- sapply(as.character(credit_risk_db[1,2]),info_extractor)
+data <- sapply(link,info_extractor)
+data_t <- data.frame(link = data[1,],status = data[2,],release_date =data[3,])
+row.names(data_t) <- c()
+credit_risk_db_complete <- merge.data.frame(credit_risk_db,data_t, by = "link")
+
+# è ok, ma verifica la corretta gestione da parte di info_extractor del seguente link:
+#https://www.eba.europa.eu/regulation-and-policy/large-exposures/guidelines-on-the-revised-large-exposures-regime
